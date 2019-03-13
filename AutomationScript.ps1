@@ -1,13 +1,17 @@
-﻿#----------------UNZIP FUNCTION-----------------------------------------------
+﻿#----------------UNZIP FUNCTION---------------------------------------------------------------------
+ # A zipped file and a desired output path are passed as the parametes to the function
+# which upon execution unzips the file.
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 function Unzip
 {
     param([string]$zipfile, [string]$outpath)
 
+    
     [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
 }
-#---------------Check ZIP----------------------------------------------------
-
+#------------------------------------Check ZIP----------------------------------------------------
+#this function is used to return either truw or false up on the basis of checking if
+#file name passed as the parameter is a zipped file or not.
 function checkZIP
 {
     param([string]$fp)
@@ -39,7 +43,7 @@ function checkZIP
             return $isZ
 }
 
-#-------------------Normal Program-------------------------------------
+#-------------------Checking the directory-------------------------------------
 $path = "C:\CBI Deployments\" 
 
 Get-ChildItem -Path $path | Export-Csv -Path .\temp1.csv -NoTypeInformation 
@@ -80,6 +84,7 @@ Foreach ($element in $csv)
                         Write-Host "Will be executing SSRS"
                     }
                }
+               # The below two lines of code is used for moving the zipped file and the extracted folder after the supposed deployment is completed.
                Move-Item -Path $patchpath -Destination "C:\CBIArchive"
                Move-Item -Path $element.Name -Destination "C:\CBIArchive"
             }
