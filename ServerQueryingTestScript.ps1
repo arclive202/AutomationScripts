@@ -24,4 +24,4 @@ $adapter = New-Object System.Data.SqlClient.SqlDataAdapter $SqlCmd
 $dataset = New-Object System.Data.DataSet
 Write-Output $adapter.Fill($dataset) 
 $SqlConn.close()
-$dataset.Tables[0] | Export-Csv "C:\testquery\DocumentCrawler.CSV" -NoTypeInformation
+$dataset.Tables[0] | Export-Csv "C:\testquery\filename.CSV" -NoTypeInformation
