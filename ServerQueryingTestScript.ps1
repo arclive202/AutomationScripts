@@ -3,12 +3,12 @@
 $cred = Get-Credential
 $username = $cred.UserName
 $pswd = $cred.Password
-$ConnString = "Data Source=10.255.130.93;Initial Catalog=QAR_CGI_PRODUCTION;User Id= {0}; Password = {1}; Trusted_Connection=True;" -f $username,$pswd
+$ConnString = "Connection String to Database" -f $username,$pswd
 $SqlConn = New-Object System.Data.SqlClient.SqlConnection
 $SqlConn.ConnectionString = $ConnString
 
 
-$SqlCmdString = "select status,count(*) DocumentCrawler from [QAR_CGI_PRODUCTION].lists.QARlistforDocumentcrawl with(nolock) group by status"
+$SqlCmdString = "Query to be executed"
 $SqlCmdTimeout = 120
 
 $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
