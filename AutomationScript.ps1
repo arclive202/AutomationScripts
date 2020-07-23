@@ -44,7 +44,7 @@ function checkZIP
 }
 
 #-------------------Checking the directory-------------------------------------
-$path = "C:\CBI Deployments\" 
+$path = "C:\CodeDeployments\" 
 
 Get-ChildItem -Path $path | Export-Csv -Path .\temp1.csv -NoTypeInformation 
 
@@ -73,7 +73,7 @@ Foreach ($element in $csv)
                     }
                     elseif($ele.Name -eq "SSIS")
                     {
-                        Write-Host "Will be executing SSIE"
+                        Write-Host "Will be executing SSIS"
                     }
                     elseif($ele.Name -eq "SSAS")
                     {
@@ -85,8 +85,8 @@ Foreach ($element in $csv)
                     }
                }
                # The below two lines of code is used for moving the zipped file and the extracted folder after the supposed deployment is completed.
-               Move-Item -Path $patchpath -Destination "C:\CBIArchive"
-               Move-Item -Path $element.Name -Destination "C:\CBIArchive"
+               Move-Item -Path $patchpath -Destination "C:\DeploymentArchive"
+               Move-Item -Path $element.Name -Destination "C:\DeploymentArchive"
             }
 
 }
