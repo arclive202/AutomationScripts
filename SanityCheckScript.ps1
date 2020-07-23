@@ -68,7 +68,7 @@ foreach ($server in $servers)
     Write-Output "================================================== $server ==================================================" | Out-File "C:HealthCheck\DiskSpace.csv" -append       
     #function call to the custom function created to generated drive info for the particular drives in that server.
     Write-Output "`n`n   DISK USAGE: " | Out-File "C:HealthCheck\DiskSpace.csv" -append       
-    Get-RemoteDiskInfo $server | Out-File C:HealthCheck\DiskSpace.csv -Append
+    Get-RemoteDiskInfo $server | Out-File "C:HealthCheck\DiskSpace.csv" -Append
 
     
     # Processor utilization
@@ -80,6 +80,8 @@ foreach ($server in $servers)
     $Memory = ((($ComputerMemory.TotalVisibleMemorySize - $ComputerMemory.FreePhysicalMemory)*100)/ $ComputerMemory.TotalVisibleMemorySize)
     $RoundMemory = [math]::Round($Memory, 2)
     Write-Output "`n   MEMORY UTILIZATION:`t`t" $RoundMemory "`n`n"| Out-File "C:HealthCheck\DiskSpace.csv" -append       
+
+    #$test = Write-Output "NewFile test."
 
 
     #Server Uptime
