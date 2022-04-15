@@ -1,5 +1,5 @@
 ﻿$username = "EUROPE\ITS-APP-IMAPP-S"
-$password =  ConvertTo-SecureString "Fq15sLCxTK513XY" -AsPlainText -Force
+$password =  ConvertTo-SecureString "*************" -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 $cred.Password.MakeReadOnly()
 $sqlCred = New-Object System.Data.SqlClient.SqlCredential($cred.username,$cred.password)
